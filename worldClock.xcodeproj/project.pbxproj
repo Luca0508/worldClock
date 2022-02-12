@@ -7,15 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A50C9A2927B63A0700033B5F /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50C9A2827B63A0700033B5F /* SearchTableViewController.swift */; };
+		A50C9A2B27B63A6900033B5F /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50C9A2A27B63A6900033B5F /* SearchTableViewCell.swift */; };
 		A5C5D60427B4ED3B0023D1A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C5D60327B4ED3B0023D1A4 /* AppDelegate.swift */; };
 		A5C5D60627B4ED3B0023D1A4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C5D60527B4ED3B0023D1A4 /* SceneDelegate.swift */; };
 		A5C5D60827B4ED3B0023D1A4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C5D60727B4ED3B0023D1A4 /* ViewController.swift */; };
 		A5C5D60B27B4ED3B0023D1A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5C5D60927B4ED3B0023D1A4 /* Main.storyboard */; };
 		A5C5D60D27B4ED3D0023D1A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5C5D60C27B4ED3D0023D1A4 /* Assets.xcassets */; };
 		A5C5D61027B4ED3D0023D1A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5C5D60E27B4ED3D0023D1A4 /* LaunchScreen.storyboard */; };
+		A5C5D61827B4F3090023D1A4 /* WorldClockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C5D61727B4F3090023D1A4 /* WorldClockTableViewCell.swift */; };
+		A5C5D61A27B4F3570023D1A4 /* WorldClockTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C5D61927B4F3570023D1A4 /* WorldClockTableViewController.swift */; };
+		A5C5D61C27B4F40B0023D1A4 /* cityInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C5D61B27B4F40B0023D1A4 /* cityInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A50C9A2827B63A0700033B5F /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
+		A50C9A2A27B63A6900033B5F /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		A5C5D60027B4ED3B0023D1A4 /* worldClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = worldClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5C5D60327B4ED3B0023D1A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5C5D60527B4ED3B0023D1A4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +31,9 @@
 		A5C5D60C27B4ED3D0023D1A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5C5D60F27B4ED3D0023D1A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A5C5D61127B4ED3D0023D1A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5C5D61727B4F3090023D1A4 /* WorldClockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockTableViewCell.swift; sourceTree = "<group>"; };
+		A5C5D61927B4F3570023D1A4 /* WorldClockTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockTableViewController.swift; sourceTree = "<group>"; };
+		A5C5D61B27B4F40B0023D1A4 /* cityInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cityInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,10 +66,15 @@
 		A5C5D60227B4ED3B0023D1A4 /* worldClock */ = {
 			isa = PBXGroup;
 			children = (
+				A50C9A2827B63A0700033B5F /* SearchTableViewController.swift */,
+				A5C5D61B27B4F40B0023D1A4 /* cityInfo.swift */,
 				A5C5D60327B4ED3B0023D1A4 /* AppDelegate.swift */,
 				A5C5D60527B4ED3B0023D1A4 /* SceneDelegate.swift */,
 				A5C5D60727B4ED3B0023D1A4 /* ViewController.swift */,
 				A5C5D60927B4ED3B0023D1A4 /* Main.storyboard */,
+				A50C9A2A27B63A6900033B5F /* SearchTableViewCell.swift */,
+				A5C5D61927B4F3570023D1A4 /* WorldClockTableViewController.swift */,
+				A5C5D61727B4F3090023D1A4 /* WorldClockTableViewCell.swift */,
 				A5C5D60C27B4ED3D0023D1A4 /* Assets.xcassets */,
 				A5C5D60E27B4ED3D0023D1A4 /* LaunchScreen.storyboard */,
 				A5C5D61127B4ED3D0023D1A4 /* Info.plist */,
@@ -138,9 +153,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5C5D61C27B4F40B0023D1A4 /* cityInfo.swift in Sources */,
 				A5C5D60827B4ED3B0023D1A4 /* ViewController.swift in Sources */,
 				A5C5D60427B4ED3B0023D1A4 /* AppDelegate.swift in Sources */,
+				A50C9A2927B63A0700033B5F /* SearchTableViewController.swift in Sources */,
 				A5C5D60627B4ED3B0023D1A4 /* SceneDelegate.swift in Sources */,
+				A50C9A2B27B63A6900033B5F /* SearchTableViewCell.swift in Sources */,
+				A5C5D61A27B4F3570023D1A4 /* WorldClockTableViewController.swift in Sources */,
+				A5C5D61827B4F3090023D1A4 /* WorldClockTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

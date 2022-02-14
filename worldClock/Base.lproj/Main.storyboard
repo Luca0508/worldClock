@@ -101,6 +101,9 @@
                     <navigationItem key="navigationItem" id="IbL-xd-Cyk">
                         <barButtonItem key="leftBarButtonItem" title="Edit" id="NkW-HV-jGI">
                             <color key="tintColor" systemColor="systemOrangeColor"/>
+                            <connections>
+                                <action selector="clickEditButton:" destination="GYX-ft-uoe" id="Qhx-CI-tCg"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="Oa5-4Q-O61">
                             <color key="tintColor" red="0.86078917980000003" green="0.61309946420000005" blue="0.33554537919999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -144,6 +147,7 @@
                                 <color key="tintColor" red="0.86078917980000003" green="0.61309946420000005" blue="0.33554537919999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
                                     <outlet property="SearchCityLabel" destination="7iS-6x-ECH" id="s9s-va-u05"/>
+                                    <segue destination="Vnb-05-KZO" kind="unwind" unwindAction="unwindToSearchTableViewController:" id="HA5-6u-k10"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -155,6 +159,7 @@
                     <navigationItem key="navigationItem" title="Choose a City" id="gJa-JF-H0E"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u6j-UI-G7x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Vnb-05-KZO" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3308.6956521739135" y="-510.26785714285711"/>
         </scene>

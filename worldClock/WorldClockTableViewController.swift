@@ -9,94 +9,108 @@ import UIKit
 
 class WorldClockTableViewController: UITableViewController {
     
-    var cities = [
-        cityInfo(identify: knownTimeZoneID[21]),
-        cityInfo(identify: knownTimeZoneID[100])
-]
+    var cityList = [cityInfo](){
+        didSet{
+            cityInfo.saveInfo(info: cityList)
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let cityList = cityInfo.loadData(){
+            self.cityList = cityList
+        }
         
         tableView.rowHeight = 90
         tableView.separatorStyle = .singleLine
         tableView.separatorColor = .gray
         
-        
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
     
-    /*
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-     */
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return cities.count
+        return cityList.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(WorldClockTableViewCell.self)", for: indexPath) as? WorldClockTableViewCell else {return UITableViewCell()}
-        let cityInfo = cities[indexPath.row]
+        let cityInfo = cityList[indexPath.row]
         cell.cityLabel.text = cityInfo.cityName
         cell.relativeHourLabel.text = cityInfo.relativeHour
-        cell.timeLabel.text = cityInfo.localTime
         cell.relativeDateLabel.text = cityInfo.relativeDate
+        cell.timeLabel.text = cityInfo.localTime
+        
+        // if u click edit button, the timeLabel will be hidden
+        cell.timeLabel.isHidden = isEditing
+        
+        // the background color of cell won't change when you click the cell
+        cell.selectionStyle = .none
+        
+        cell.overrideUserInterfaceStyle = .dark
+        
 
         // Configure the cell...
 
         return cell
     }
     @IBAction func unwindToSearchTableViewController(_ unwindSegue: UIStoryboardSegue) {
-        let sourceViewController = unwindSegue.source
-        // Use data from the view controller which initiated the unwind segue
+        if let sourceViewController = unwindSegue.source as? SearchTableViewController,
+           let city = sourceViewController.city{
+            if !(cityList.contains(where: { cityInfo in
+                cityInfo.cityName == city.cityName
+            })){
+                cityList.append(city)
+            }
+            
+            
+            tableView.reloadData()
+        }
     }
+    
+   
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        cityList.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+    }
+   
 
-    /*
+    
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
+    
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
+    // make the cell become movable
     // Override to support conditional rearranging of the table view.
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
         return true
     }
-    */
+    
+    // Override to support rearranging the table view.
+    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+        let removeItem = cityList[fromIndexPath.row]
+        cityList.remove(at: fromIndexPath.row)
+        cityList.insert(removeItem, at: to.row)
 
+    }
+    
+
+    @IBAction func clickEditButton(_ sender: UIBarButtonItem) {
+        // set whether the view controller show the editable view
+        super.setEditing(!tableView.isEditing , animated: true)
+        sender.title = isEditing ? "Done": "Edit"
+        
+        tableView.allowsSelectionDuringEditing = true
+        tableView.reloadData()
+        
+    }
+    
     /*
     // MARK: - Navigation
 

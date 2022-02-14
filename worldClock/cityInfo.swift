@@ -16,14 +16,13 @@ struct cityInfo: Codable{
     
     
     var identify: String
-//    init(identify : String){
-//        self.identify = identify
-//    }
-//
-//    static var timezone = TimeZone(identifier: identify)
     var cityName: String {
+        let fullName = identify.replacingOccurrences(of: "_", with: " ").components(separatedBy: "/")
+        if fullName.count > 2{
+            return fullName[1] + ", " + fullName[2]
+        }
         
-        return identify.components(separatedBy: "/")[1].replacingOccurrences(of: "_", with: " ")
+        return fullName[1]
     }
     var cityPrefix : String{
         return String(cityName.prefix(1))
@@ -56,12 +55,23 @@ struct cityInfo: Codable{
         dateformatter.dateFormat = "HH:mm"
         return dateformatter.string(from: .now)
     }
-//
     
-//    static func saveInfo(info :[cityInfo]){
-//        let encoder = JSONEncoder()
-//        guard let data = try? encoder.encode(info) else {return }
-//    }
+    static let documentDictionary = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+    
+    static func loadData() -> [cityInfo]?{
+        let url = documentDictionary.appendingPathComponent("cityList")
+        guard let data = try? Data(contentsOf: url) else {return nil}
+        let decoder = JSONDecoder()
+        return try? decoder.decode([cityInfo].self, from: data)
+        
+    }
+    
+    static func saveInfo(info :[cityInfo]){
+        let encoder = JSONEncoder()
+        guard let data = try? encoder.encode(info) else {return }
+        let url = documentDictionary.appendingPathComponent("cityList")
+        try? data.write(to: url)
+    }
 }
 
 

@@ -98,6 +98,7 @@ class SearchTableViewController: UITableViewController {
        
         return cityDictinaryKey[section]
     }
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if searching{

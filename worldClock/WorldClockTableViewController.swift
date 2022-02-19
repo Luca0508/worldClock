@@ -25,6 +25,11 @@ class WorldClockTableViewController: UITableViewController {
         tableView.separatorStyle = .singleLine
         tableView.separatorColor = .gray
         
+        let timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+            self.tableView.isEditing ? nil : self.tableView.reloadData()
+        }
+        timer.fire()
+        
     }
 
     // MARK: - Table view data source

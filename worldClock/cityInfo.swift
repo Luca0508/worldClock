@@ -31,13 +31,15 @@ struct cityInfo: Codable{
     var relativeDate : String{
         let dateformatter = DateFormatter()
         dateformatter.timeZone = TimeZone(identifier: identify)
+//        dateformatter.dateFormat = "yyyy/MM/dd"
+        
+        
         dateformatter.dateStyle = .medium
         dateformatter.timeStyle = .none
         dateformatter.doesRelativeDateFormatting = true
         
-//        let currentDateFormatter = DateFormatter()
-//        currentDateFormatter.timeZone = .current
         return dateformatter.string(from: .now) + ","
+        
     }
     
     var relativeHour : String {
@@ -56,6 +58,7 @@ struct cityInfo: Codable{
         return dateformatter.string(from: .now)
     }
     
+    // save and load data
     static let documentDictionary = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     
     static func loadData() -> [cityInfo]?{

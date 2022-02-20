@@ -30,6 +30,7 @@ class WorldClockTableViewController: UITableViewController {
         }
         timer.fire()
         
+        
     }
 
     // MARK: - Table view data source
@@ -53,28 +54,10 @@ class WorldClockTableViewController: UITableViewController {
         
         // the background color of cell won't change when you click the cell
         cell.selectionStyle = .none
-        
         cell.overrideUserInterfaceStyle = .dark
         
-
-        // Configure the cell...
-
         return cell
     }
-    @IBAction func unwindToSearchTableViewController(_ unwindSegue: UIStoryboardSegue) {
-        if let sourceViewController = unwindSegue.source as? SearchTableViewController,
-           let city = sourceViewController.city{
-            if !(cityList.contains(where: { cityInfo in
-                cityInfo.cityName == city.cityName
-            })){
-                cityList.append(city)
-            }
-            
-            
-            tableView.reloadData()
-        }
-    }
-    
    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         cityList.remove(at: indexPath.row)
@@ -116,14 +99,23 @@ class WorldClockTableViewController: UITableViewController {
         
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+   
+    @IBSegueAction func addCity(_ coder: NSCoder) -> SearchTableViewController? {
+        let searchTableViewController =  SearchTableViewController(coder: coder)
+        searchTableViewController?.delegate = self
+        return searchTableViewController
     }
-    */
+}
 
+extension WorldClockTableViewController : SearchTableViewControllerDelegate{
+    
+    func searchTableViewController( _ controller : SearchTableViewController, addCity city:cityInfo){
+        
+        if !(cityList.contains(where: { cityInfo in
+            cityInfo.cityName == city.cityName
+        })){
+            cityList.append(city)
+        }
+        tableView.reloadData()
+    }
 }

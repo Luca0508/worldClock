@@ -31,9 +31,7 @@ struct cityInfo: Codable{
     var relativeDate : String{
         let dateformatter = DateFormatter()
         dateformatter.timeZone = TimeZone(identifier: identify)
-//        dateformatter.dateFormat = "yyyy/MM/dd"
-        
-        
+
         dateformatter.dateStyle = .medium
         dateformatter.timeStyle = .none
         dateformatter.doesRelativeDateFormatting = true

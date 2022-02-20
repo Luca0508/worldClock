@@ -10,7 +10,7 @@
         <!--World Clock Table View Controller-->
         <scene sceneID="Ygm-7X-oiF">
             <objects>
-                <tableViewController id="GYX-ft-uoe" customClass="WorldClockTableViewController" customModule="worldClock" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="WorldClockTableViewController" id="GYX-ft-uoe" customClass="WorldClockTableViewController" customModule="worldClock" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="rd6-1P-gLX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -108,7 +108,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="Oa5-4Q-O61">
                             <color key="tintColor" red="0.86078917980000003" green="0.61309946420000005" blue="0.33554537919999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
-                                <segue destination="u19-KC-dVv" kind="show" id="gZG-dg-gJf"/>
+                                <segue destination="u19-KC-dVv" kind="show" destinationCreationSelector="addCity:" id="gZG-dg-gJf"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -147,7 +147,6 @@
                                 <color key="tintColor" red="0.86078917980000003" green="0.61309946420000005" blue="0.33554537919999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
                                     <outlet property="SearchCityLabel" destination="7iS-6x-ECH" id="s9s-va-u05"/>
-                                    <segue destination="Vnb-05-KZO" kind="unwind" unwindAction="unwindToSearchTableViewController:" id="HA5-6u-k10"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -159,7 +158,6 @@
                     <navigationItem key="navigationItem" title="Choose a City" id="gJa-JF-H0E"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u6j-UI-G7x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="Vnb-05-KZO" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3308.6956521739135" y="-510.26785714285711"/>
         </scene>

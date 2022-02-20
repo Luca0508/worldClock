@@ -115,8 +115,6 @@ class SearchTableViewController: UITableViewController {
         navigationController?.popViewController(animated: true)
     }
 
-    
-
 }
 extension SearchTableViewController : UISearchResultsUpdating{
     func updateSearchResults(for searchController: UISearchController) {
